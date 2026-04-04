@@ -1,7 +1,7 @@
 package service;
 
 //importを追加
-import model.MenuItem ;
+import model.MenuItem;
 import model.Restaurant;
 import model.Yakinikuya;
 
@@ -11,12 +11,12 @@ public class MenuService {
     public boolean addCommonMenuItem(Yakinikuya yakinikuya,String name,int price){
 
         //今まで作成した共通メニューの配列を取得
-        MenuItem[] commoMenuItems = yakinikuya.getCommonMenuItems();
+        MenuItem[] commonMenuItems = yakinikuya.getCommonMenuItems();
 
         //新たにメニューが追加できるかどうかを確認するために、配列の中身を確認していく
-        for (int i = 0; i < commoMenuItems.length; i++) {
-            if(commoMenuItems[i] == null){
-                commoMenuItems[i] = new MenuItem(name, price);
+        for (int i = 0; i < commonMenuItems.length; i++) {
+            if(commonMenuItems[i] == null){
+                commonMenuItems[i] = new MenuItem(name, price);
                 return true;
             }
         }
