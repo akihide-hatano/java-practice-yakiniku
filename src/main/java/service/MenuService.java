@@ -36,19 +36,19 @@ public class MenuService {
     }
 
     public void displayCommonMenu(Yakinikuya yakinikuya){
-        System.out.println();
+        System.out.println("---- 共通メニュー ----");
         for (MenuItem item : yakinikuya.getCommonMenuItems()) {
             if( item != null){
-                System.out.println(item.getName() + " : " + item.getPrice());
+                System.out.println(item.getName() + " : " + item.getPrice()+"円");
             }
         }
     }
 
     public void displayLocalMenu(Restaurant restaurant){
-        System.out.println();
+        System.out.println("---- 共通メニュー ----");
         for (MenuItem item : restaurant.getLocalMenuItems()){
             if( item != null){
-                System.out.println(item.getName() + " :" + item.getPrice());
+                System.out.println(item.getName() + " :" + item.getPrice()+"円");
             }
         }
     }
