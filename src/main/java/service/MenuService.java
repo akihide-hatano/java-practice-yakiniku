@@ -3,12 +3,12 @@ package service;
 //importを追加
 import model.MenuItem;
 import model.Restaurant;
-import model.Yakinikuya;
+import model.YakinikuyaGroup;
 
 public class MenuService {
 
     //共通メニューと店舗メニューを追加するメソッドを作成
-    public boolean addCommonMenuItem(Yakinikuya yakinikuya,String name,int price){
+    public boolean addCommonMenuItem(YakinikuyaGroup yakinikuya,String name,int price){
 
         //今まで作成した共通メニューの配列を取得
         MenuItem[] commonMenuItems = yakinikuya.getCommonMenuItems();
@@ -40,7 +40,7 @@ public class MenuService {
     }
 
     //共通メニューと店舗独自のメニューを表示するメソッドを作成
-    public void displayCommonMenu(Yakinikuya yakinikuya){
+    public void displayCommonMenu(YakinikuyaGroup yakinikuya){
         System.out.println("---- 共通メニュー ----");
         //共通メニューを表示するために、共通メニューの配列を取得して、配列の中身を確認していく
         for (MenuItem item : yakinikuya.getCommonMenuItems()) {
