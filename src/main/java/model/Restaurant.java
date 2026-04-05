@@ -17,11 +17,11 @@ public class Restaurant {
     }
 
     //geterでしかとれないように設定
-    public String getName(){
+    public String getStoreName(){
         return name;
     }
 
-    public String getAddress(){
+    public String getStoreAddress(){
         return address;
     }
 

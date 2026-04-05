@@ -1,6 +1,6 @@
 package model;
 
-public class Yakinikuya {
+public class YakinikuyaGroup {
 
 	//フィールドで必要なものを定義
 	private final String groupName;
@@ -13,25 +13,13 @@ public class Yakinikuya {
 	private static final int MAX_COMMON_MENU_ITEMS = 10;
 
 	//コンストラクタを作成
-	public Yakinikuya(String groupName){
+	public YakinikuyaGroup(String groupName){
 		this.groupName = groupName;
 		this.restaurants = new Restaurant[MAX_RESTAURANTS];
 		this.restaurantCount = 0;
 
 		//共通メニューの初期化
 		this.commonMenuItems = new MenuItem[MAX_COMMON_MENU_ITEMS];
-	}
-
-	//10件までしか登録できないようにする
-	public boolean addRestaurant(Restaurant restaurant){
-		if(restaurantCount < restaurants.length){
-			restaurants[restaurantCount] = restaurant;
-			restaurantCount++;
-			return true;
-		}
-		else{
-			throw new IllegalStateException("これ以上店舗を追加できません");
-		}
 	}
 
 	//getterでしかとれないようにグループ名の設定
@@ -43,4 +31,27 @@ public class Yakinikuya {
 	public MenuItem[] getCommonMenuItems(){
 		return commonMenuItems;
 	}
+
+	//外から配列を取れるように追加
+	public Restaurant[] getRestaurants(){
+		return restaurants;
+	}
+
+	//外から店舗数を把握確認できる
+	public int getrestaurantCount(){
+		return restaurantCount;
+	}
+
+	//店舗を最大10件までもてるようにするためのメソッドを作成
+	public boolean addRestaurant(Restaurant restaurant){
+		if( restaurantCount < MAX_RESTAURANTS){
+			restaurants[restaurantCount] = restaurant;
+			restaurantCount++;
+			return true;
+		}
+		else{
+			throw new IllegalStateException("これ以上店舗はもてません");
+		}
+	}
+
 }
