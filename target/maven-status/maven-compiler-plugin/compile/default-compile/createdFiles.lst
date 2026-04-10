@@ -1,5 +1,7 @@
 model/MenuItem.class
+service/GroupService.class
 app/Main.class
 model/Restaurant.class
+model/YakinikuyaGroup.class
 service/RestaurantService.class
 service/MenuService.class
