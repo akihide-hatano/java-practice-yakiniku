@@ -1,8 +1,0 @@
-model/MenuItem.class
-service/GroupService.class
-app/Main.class
-model/Restaurant.class
-model/YakinikuyaGroup.class
-service/RestaurantService.class
-repository/DBConnection.class
-service/MenuService.class
