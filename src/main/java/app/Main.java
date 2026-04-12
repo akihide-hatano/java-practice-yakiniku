@@ -56,6 +56,10 @@ public class Main {
         //ユーザーテーブルに新しいユーザーを追加するテストコード
         repo.insertUser("Tago", 4);
         repo.selectUsers();
+
+        //ユーザーテーブルから特定の更新を行うテストコード
+        repo.updateUser("NewName", 1);
+        repo.selectUsers();
         }
 }
 
