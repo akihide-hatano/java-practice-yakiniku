@@ -3,6 +3,7 @@ package app;
 //modelのインポート
 import model.Restaurant;
 import model.YakinikuyaGroup;
+import model.User;
 
 //サービスのメソッドをimport
 import service.MenuService;
@@ -54,11 +55,13 @@ public class Main {
         repo.selectUsers();
 
         //ユーザーテーブルに新しいユーザーを追加するテストコード
-        // repo.insertUser("Tago", 4);
-        // repo.selectUsers();
+        User newUser = new User(6, "Tago");
+        repo.insertUser(newUser);
+        repo.selectUsers();
 
         //ユーザーテーブルから特定の更新を行うテストコード
-        repo.updateUser("NewName", 1);
+        User updateUser = new User(1, "NewName");
+        repo.updateUser(updateUser);
         repo.selectUsers();
 
         //ユーザーテーブルから特定のidを削除を行うテストコード
@@ -66,4 +69,3 @@ public class Main {
         repo.selectUsers();
         }
 }
-

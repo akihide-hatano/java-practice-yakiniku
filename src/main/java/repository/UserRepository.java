@@ -62,13 +62,13 @@ public class UserRepository {
     }
 
     //ユーザーーテーブルから特定のidを削除を行うメソッド
-    public void deleteUser(User user){
+    public void deleteUser(int id){
         String sql = "DELETE FROM users WHERE id = ?";
         try(
             Connection con = DBConnection.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql)
         ) {
-            pstm.setInt(1, user.getId());
+            pstm.setInt(1, id);
             pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
