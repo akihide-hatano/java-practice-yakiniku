@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 
 public class UserRepository {
 
+    //ユーザーテーブルから全てのユーザーを取得するメソッド
     public void selectUsers() {
         String sql = "SELECT * FROM users";
 
@@ -20,6 +21,21 @@ public class UserRepository {
                 String name = rs.getString("name");
                 System.out.println("ID: " + id + ", Name: " + name);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //ユーザーテーブルに新しいユーザーを追加するメソッド
+    public void insertUser(String name,int id){
+        String sql = "INSERT INTO users (id, name) VALUES (?, ?)";
+        try(
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pstm = con.prepareStatement(sql)
+        ) {
+            pstm.setInt(1, id);
+            pstm.setString(2, name);
+            pstm.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

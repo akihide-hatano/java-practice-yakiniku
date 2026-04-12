@@ -49,7 +49,12 @@ public class Main {
                 System.out.println("DB接続失敗: " + e.getMessage());
         }
 
+        //ユーザーテーブルから全てのユーザーを取得するテストコード
         UserRepository repo = new UserRepository();
+        repo.selectUsers();
+
+        //ユーザーテーブルに新しいユーザーを追加するテストコード
+        repo.insertUser("Tago", 4);
         repo.selectUsers();
         }
 }
