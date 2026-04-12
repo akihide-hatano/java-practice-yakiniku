@@ -40,4 +40,19 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
+
+    //ユーザーテーブルから特定の更新を行うメソッド
+    public void updateUser(String namem,int id){
+        String sql = "UPDATE users SET name = ? WHERE id = ?";
+        try(
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pstm = con.prepareStatement(sql)
+        ) {
+            pstm.setString(1, namem);
+            pstm.setInt(2, id);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
