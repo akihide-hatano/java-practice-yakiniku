@@ -55,4 +55,18 @@ public class UserRepository {
             e.printStackTrace();
         }
     }
+
+    //ユーザーーテーブルから特定のidを削除を行うメソッド
+    public void deleteUser(int id){
+        String sql = "DELETE FROM users WHERE id = ?";
+        try(
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pstm = con.prepareStatement(sql)
+        ) {
+            pstm.setInt(1, id);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+    }
+}
 }
