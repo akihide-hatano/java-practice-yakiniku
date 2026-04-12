@@ -8,6 +8,11 @@ import model.YakinikuyaGroup;
 import service.MenuService;
 import service.RestaurantService;
 
+//DB接続のクラスをimport
+import repository.DBConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class Main {
 	public static void main(String[] args) {
 // サービスを準備
@@ -34,6 +39,13 @@ public class Main {
         restaurantService.displayRestrants(group);     // 店舗一覧
         menuService.displayCommonMenu(group);           // 共通メニュー
         menuService.displayLocalMenu(restaurants[0]);   // 梅田店の独自メニュー
-	}
+
+        //DB接続のテストコード
+        try(Connection conn = DBConnection.getConnection()) {
+            System.out.println("DB接続成功");
+        } catch (SQLException e) {
+            System.out.println("DB接続失敗: " + e.getMessage());
+        }
+        }
 }
 
