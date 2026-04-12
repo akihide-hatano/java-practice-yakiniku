@@ -3,6 +3,7 @@
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/model/Restaurant.java
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/model/YakinikuyaGroup.java
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/repository/DBConnection.java
+/Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/repository/UserRepository.java
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/service/GroupService.java
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/service/MenuService.java
 /Users/hatanotakihide/Desktop/java-practice/yakiniku-app/src/main/java/service/RestaurantService.java

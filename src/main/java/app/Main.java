@@ -10,6 +10,8 @@ import service.RestaurantService;
 
 //DB接続のクラスをimport
 import repository.DBConnection;
+import repository.UserRepository;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -42,10 +44,13 @@ public class Main {
 
         //DB接続のテストコード
         try(Connection conn = DBConnection.getConnection()) {
-            System.out.println("DB接続成功");
+                System.out.println("DB接続成功");
         } catch (SQLException e) {
-            System.out.println("DB接続失敗: " + e.getMessage());
+                System.out.println("DB接続失敗: " + e.getMessage());
         }
+
+        UserRepository repo = new UserRepository();
+        repo.selectUsers();
         }
 }
 
