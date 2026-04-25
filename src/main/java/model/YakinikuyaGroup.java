@@ -28,13 +28,15 @@ public class YakinikuyaGroup {
 	}
 
 	//共通メニューも取れるように追加
+	//配列を直接返すのは安全ではないため、コピーを返すようにする
 	public MenuItem[] getCommonMenuItems(){
-		return commonMenuItems;
+		return commonMenuItems.clone();
 	}
 
 	//外から配列を取れるように追加
+	//配列を直接返すのは安全ではないため、コピーを返すようにする
 	public Restaurant[] getRestaurants(){
-		return restaurants;
+		return restaurants.clone();
 	}
 
 	//外から店舗数を把握確認できる

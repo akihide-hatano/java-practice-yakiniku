@@ -26,6 +26,7 @@ public class Restaurant {
     }
 
     public MenuItem[] getLocalMenuItems(){
-        return localMenuItems;
+        //配列を返すときはcloneして返す
+        return localMenuItems.clone();
     }
 }
