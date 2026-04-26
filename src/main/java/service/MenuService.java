@@ -25,22 +25,13 @@ public class MenuService {
         restaurant.removeLocalMenuItem(name);
     }
 
-    //共通メニューと店舗独自のメニューを表示するためのメソッドを作成
-    public void displayCommonMenu(YakinikuyaGroup yakinikuya){
-        System.out.println("---- 共通メニュー ----");
-        for (MenuItem item : yakinikuya.getCommonMenuItems()) {
-            if (item != null){
-                System.out.println(item.getName() + " : " + item.getPrice() + "円");
-            }
-        }
+    //店舗独自のメニューを表示するためのメソッドを作成
+    public MenuItem[] getCommonMenuItems(YakinikuyaGroup yakinikuya){
+        return yakinikuya.getCommonMenuItems();
     }
 
-    public void displayLocalMenu(Restaurant restaurant){
-        System.out.println("---- 独自メニュー ----");
-        for (MenuItem item : restaurant.getLocalMenuItems()){
-            if (item != null){
-                System.out.println(item.getName() + " : " + item.getPrice() + "円");
-            }
-        }
+    //店舗独自のメニューを表示するためのメソッドを作成
+    public MenuItem[] getLocalMenuItems(Restaurant restaurant){
+        return restaurant.getLocalMenuItems();
     }
 }
