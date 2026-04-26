@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import java.sql.SQLException;
+
 public class UserRepository {
 
     //ユーザーテーブルから全てのユーザーを取得するメソッド
@@ -26,8 +28,10 @@ public class UserRepository {
                 String name = rs.getString("name");
                 System.out.println("ID: " + id + ", Name: " + name);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+            //SQLExceptionが発生した場合はRuntimeExceptionをスローする
+            catch (SQLException e) {
+                throw new RuntimeException("ユーザーの取得に失敗しました", e);
         }
     }
 
@@ -41,14 +45,16 @@ public class UserRepository {
             pstm.setInt(1, user.getId());
             pstm.setString(2, user.getName());
             pstm.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        //SQLExceptionが発生した場合はRuntimeExceptionをスローする
+        catch (SQLException e) {
+            throw new RuntimeException("ユーザーの追加に失敗しました", e);
         }
     }
 
     //ユーザーテーブルから特定の更新を行うメソッド
     public void updateUser(User user){
-         String sql = "UPDATE users SET name = ? WHERE id = ?";
+        String sql = "UPDATE users SET name = ? WHERE id = ?";
         try(
             Connection con = DBConnection.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql)
@@ -56,8 +62,10 @@ public class UserRepository {
             pstm.setString(1, user.getName());
             pstm.setInt(2, user.getId());
             pstm.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        //SQLExceptionが発生した場合はRuntimeExceptionをスローする
+        catch (SQLException e) {
+            throw new RuntimeException("ユーザーの更新ができませんでした。",e);
         }
     }
 
@@ -70,8 +78,10 @@ public class UserRepository {
         ) {
             pstm.setInt(1, id);
             pstm.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        //SQLExceptionが発生した場合はRuntimeExceptionをスローする
+        catch (SQLException e) {
+            throw new RuntimeException("ユーザーの削除ができませんでした。", e);
+        }
     }
-}
 }
