@@ -27,14 +27,14 @@ public class RestaurantService {
 	}
 
 	//店舗を作成するためのメソッドを作成
-	public Restaurant creaeRestaurant(String name,String address){
+	public Restaurant createRestaurant(String name,String address){
 		return new Restaurant(name, address);
 	}
 
 	//ちゃんと空白がありcreateRestaurantの引数が2つあるかどうかを確認するためのメソッドを作成
-	public boolean addRestaurant(YakinikuyaGroup group,String name,String address){
+	public void addRestaurant(YakinikuyaGroup group,String name,String address){
 		Restaurant restaurant = new Restaurant(name, address);
-		return group.addRestaurant(restaurant);
+		group.addRestaurant(restaurant);
 	}
 
 
