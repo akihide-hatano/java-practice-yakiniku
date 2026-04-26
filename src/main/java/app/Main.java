@@ -72,6 +72,7 @@ public class Main {
         }
 
         //DB接続のテストコード
+        UserRepository userRepository = new UserRepository();
         try(Connection conn = DBConnection.getConnection()) {
                 System.out.println("DB接続成功");
         } catch (SQLException e) {
@@ -79,25 +80,40 @@ public class Main {
         }
 
         //ユーザーテーブルから全てのユーザーを取得するテストコード
-        UserRepository repo = new UserRepository();
-        repo.selectUsers();
+        try {
+                userRepository.selectUsers();
+        } catch (RuntimeException e) {
+                System.out.println("ユーザーの取得に失敗: " + e.getMessage());
+        }
 
         //ユーザーテーブルに新しいユーザーを追加するテストコード
-        System.out.println("\n--- CREATE: id=5 を追加 ---");
-        User newUser = new User(5, "Tago");
-        repo.insertUser(newUser);
-        repo.selectUsers();
+        try {
+                User user = new User(4, "Sato");
+                userRepository.insertUser(user);
+                userRepository.selectUsers();
+        } catch (RuntimeException e) {
+                System.out.println("ユーザーの追加に失敗: " + e.getMessage());
+        }
 
         //ユーザーテーブルから特定の更新を行うテストコード
-        System.out.println("\n--- UPDATE: id=1 を更新 ---");
-        User updateUser = new User(1, "NewName");
-        repo.updateUser(updateUser);
-        repo.selectUsers();
+        try {
+                System.out.println("\n--- UPDATE: id=1 を更新 ---");
+                User updateUser = new User(1, "NewName");
+                userRepository.updateUser(updateUser);
+                userRepository.selectUsers();
+        } catch (RuntimeException e) {
+                System.out.println("ユーザーの更新に失敗: " + e.getMessage());
+        }
 
         //ユーザーテーブルから特定のidを削除を行うテストコード
-        System.out.println("\n--- DELETE: id=5 を削除 ---");
-        repo.deleteUser(5);
-        repo.selectUsers();
+        try {
+                System.out.println("\n--- DELETE: id=6 を削除 ---");
+                int deleteId = 6;
+                userRepository.deleteUser(deleteId);
+                userRepository.selectUsers();
+        } catch (RuntimeException e) {
+                System.out.println("ユーザーの削除に失敗: " + e.getMessage());
+        }
 
         }
 }
