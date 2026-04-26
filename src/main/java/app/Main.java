@@ -36,12 +36,40 @@ public class Main {
         // 特定の店舗に独自メニューを追加
         Restaurant[] restaurants = group.getRestaurants();
         menuService.addLocalMenuItem(restaurants[0], "梅田限定ホルモン", 750);
+        menuService.addLocalMenuItem(restaurants[1], "難波限定ホルモン", 800);
 
         // --- 表示 ---
         System.out.println("グループ名: " + group.getGroupName());
         restaurantService.displayRestrants(group);     // 店舗一覧
-        menuService.displayCommonMenu(group);           // 共通メニュー
-        menuService.displayLocalMenu(restaurants[0]);   // 梅田店の独自メニュー
+
+        // 共通メニューを表示
+        System.out.println("\n--- 共通メニュー ---");
+        for(model.MenuItem item : menuService.getCommonMenuItems(group)){
+                if(item != null){
+                System.out.println(item.getName() + ": " + item.getPrice() + "円");
+        }
+        }
+
+        // 店舗独自メニューを表示
+        System.out.println("\n--- 店舗独自メニュー (梅田店) ---");
+        for(model.MenuItem item : menuService.getLocalMenuItems(restaurants[0])){
+                if(item != null){
+                System.out.println(item.getName() + ": " + item.getPrice() + "円");
+        }
+        }
+
+        //店舗独自メニューを全て表示
+        System.out.println("\n--- 店舗独自メニュー (全店舗) ---");
+        for(Restaurant restaurant : restaurants){
+                if(restaurant != null){
+                System.out.println("店舗: " + restaurant.getStoreName());
+                for(model.MenuItem item : menuService.getLocalMenuItems(restaurant)){
+                        if(item != null){
+                        System.out.println("  " + item.getName() + ": " + item.getPrice() + "円");
+                }
+                }
+        }
+        }
 
         //DB接続のテストコード
         try(Connection conn = DBConnection.getConnection()) {
