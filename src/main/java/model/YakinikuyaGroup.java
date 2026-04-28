@@ -29,6 +29,12 @@ public class YakinikuyaGroup {
 
 	//共通メニューを追加するメソッド（業務ルールはmodelが持つ）
 	public void addCommonMenuItem(String name, int price){
+		if (name == null || name.trim().isEmpty()) {
+			throw new IllegalArgumentException("メニュー名は不正です");
+		}
+		if( price <= 0) {
+			throw new IllegalArgumentException("価格は正の整数でなければなりません");
+		}
 		for (int i = 0; i < commonMenuItems.length; i++) {
 			if (commonMenuItems[i] == null) {
 				commonMenuItems[i] = new MenuItem(name, price);

@@ -31,7 +31,15 @@ public class Restaurant {
     }
 
     //店舗独自のメニューを追加するメソッド（業務ルールはmodelが持つ）
+    //throwしてnullを入れないようにする
     public void addLocalMenuItem(String name, int price){
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("メニュー名は不正です");
+        }
+        if( price <= 0) {
+            throw new IllegalArgumentException("価格は正の整数でなければなりません");
+        }
+
         for (int i = 0; i < localMenuItems.length; i++) {
             if (localMenuItems[i] == null) {
                 localMenuItems[i] = new MenuItem(name, price);
