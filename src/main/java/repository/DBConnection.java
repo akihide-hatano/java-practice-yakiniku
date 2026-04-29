@@ -1,17 +1,19 @@
-//DBにつなぐための接続の詳細を記述するクラス
-
 package repository;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/test_db?allowPublicKeyRetrieval=true&useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "ah19841202";
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     public static Connection getConnection() throws SQLException {
+        if (URL == null || USER == null || PASSWORD == null) {
+            throw new IllegalStateException("DB接続情報が環境変数に設定されていません");
+        }
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
