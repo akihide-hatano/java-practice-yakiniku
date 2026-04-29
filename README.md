@@ -78,36 +78,22 @@ JUnitを用いてテストコードを作成しています。
 - Maven
 - JUnit 5
 - VSCode
+- MySQL
 
 ---
 
 ## 今後やりたいこと
 
-- DB（MySQL等）と接続し、CRUD（作成・参照・更新・削除）処理を実装する
-- JDBCを用いたデータ永続化の実装
-- Service層からDBアクセスを分離し、Repository層を導入する
-- 入力値のバリデーション強化（nullチェック・不正値対応）
-- テストコードの拡充（異常系・境界値テスト）
+- Repositoryのinterface化（DI対応）
+- User以外（Menu / Restaurant）のDB永続化
+- Service層の責務整理（ユースケース単位へ）
+- エラーコード設計
+- ログ設計（ユーザー向けと開発者向けの分離）
+- Spring Bootへの移行
 
 ---
 
 ## 今後の設計方針（Spring Bootを意識）
 
-将来的にはSpring Boot構成に寄せて、以下のようなレイヤードアーキテクチャへ移行することを想定しています。
-
-```text
-src/main/java
-├── controller   # リクエスト受付（将来的に追加）
-├── service      # ビジネスロジック
-├── repository   # DBアクセス層（DAO）
-├── model        # エンティティ
-└── app          # 起動クラス
-```
-
-- controller：外部入力（Web/API）を受け取る
-- service：業務ロジックを担当
-- repository：DBとのやり取りを担当
-- model：データ構造を表現
-
-現在は学習段階として `model / service / app` に分離していますが、
-将来的にはSpring Bootを用いた実務的な構成へ拡張していく予定です。
+現在はCLIアプリとして実装していますが、
+将来的にWebアプリへ移行できる設計を意識しています。
